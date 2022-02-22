@@ -1,0 +1,57 @@
+{% extends 'header.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html><title></title>
+	<style type="text/css">
+		tr,td{
+			padding: 10px;
+		}
+		table{
+			background-color:lightblue;
+			font-family: all;
+		}
+		h1{
+			background-color: black;
+			font-size: 35px;
+			font: bold;
+			color: white;
+		}
+	</style>
+<head>
+	
+</head>
+<body>
+<center>
+<h1>Login</h1>
+
+<form name="otp" method="post" action="{% url 'verify_otp' %}">
+	{% csrf_token %}
+	<table>
+	<b>
+		<tr>
+			<td><input type="hidden" name="gotp" value="{{otp}}"></td>
+			<td><input type="hidden" name="email" value="{{e}}"></td>
+			{% if myvar %}
+				<td><input type="hidden" name="myvar" value="{{myvar}}"></td>
+			{% endif %}
+
+		</tr>
+		<tr>
+			<td>Enter OTP</td>
+			<td><input type="password" name="otp"></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center" bgcolor="black" >
+			<input type="submit" value="Verify OTP">
+		</td>
+		</tr>
+	</b>
+	</table>
+</form>
+</center>
+
+</body>
+</html>
+{% endblock %}

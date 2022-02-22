@@ -1,0 +1,66 @@
+{% extends 'header.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		tr,td{
+			padding: 10px;
+		}
+		table{
+			background-color:lightblue;
+			font-family: all;
+		}
+		h1{
+			background-color: black;
+			font-size: 35px;
+			font: bold;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+<center>
+<h1>Contact</h1>
+{{msg}}
+<form name="contact" method="post" action="{% url 'contact' %}">
+	{% csrf_token %}
+	<table>
+	<b>
+		<tr>
+			<td>Name</td>
+			<td><input type="text" name="name"></td>
+		</tr><tr>
+			<td>Email</td>
+			<td><input type="text" name="email"></td>
+		</tr>
+		<tr>
+			<td>Mobile</td>
+			<td><input type="text" name="mobile"></td>
+		</tr>
+		<tr>
+			<td>Feedback</td>
+			<td><textarea rows="5" cols="22" " name="feedback"></textarea>></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center" bgcolor="black" >
+			<input type="submit" value="Submit"></td>
+		</tr>
+	</b>
+	</table>
+</form>
+</center>
+<hr>
+<center>
+<h2>Recent Contacts</h2></center>
+<hr>
+{% for i in contacts %}
+	Name :{{i.name}}<br>
+	Feedback :{{i.feedback}}<br>
+	<hr>
+{% endfor %}
+</body>
+</html>
+{% endblock %}
